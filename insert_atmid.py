@@ -21,7 +21,26 @@ class SLL:
                 temp = temp.next  
             current.next = newNode  
             newNode.next = temp
-        self.size = self.size + 1  
+        self.size = self.size + 1 
+  def deleteNode(self, position): 
+        if self.head == None: 
+            return 
+        temp = self.head 
+        if position == 0: 
+            self.head = temp.next
+            temp = None
+            return
+        for i in range(position -1 ): 
+            temp = temp.next
+            if temp is None: 
+                break 
+            if temp is None: 
+                return 
+            if temp.next is None: 
+                return 
+        next = temp.next.next
+        temp.next = None
+        temp.next = next
   def printList(self):
       temp=self.head
       while temp!=None:
@@ -31,7 +50,7 @@ class SLL:
 obj=SLL()
 ch=0
 while ch!=4:
-    print("Linked list implementation\n","1.Insertion at begining 2. Deletion 3. Print Llist 4. Exit")
+    print("Linked list implementation\n","1.Insertion 2. Deletion 3. Print Llist 4. Exit")
     ch=int(input())
     if ch==1:
         print("enter value of the node")
@@ -39,5 +58,5 @@ while ch!=4:
         obj.addInMid(data)
         obj.printList()
     elif ch==2:
-        obj.delete_at_end()
+        obj.deleteNode()
         obj.printList()
